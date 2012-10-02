@@ -68,7 +68,8 @@ class ajax{
 			$sql = "insert into `n2g_ratings` set 
 			`term` = '".$term."',
 			`rating` = '".$rating."',
-			`user_id` = '".$current_user->ID."'
+			`user_id` = '".$current_user->ID."',
+			`dateadded` = NOW()
 			";
 		}
 		$wpdb->query($sql);

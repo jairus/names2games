@@ -60,7 +60,7 @@ jQuery(function(){
 .middle{
 	vertical-align:middle;
 }
-.top{
+.bottom{
 	vertical-align:bottom;
 }
 .pad10{
@@ -72,6 +72,9 @@ jQuery(function(){
 .p100{
 	width:100%;
 }
+.p33{
+	width:33%;
+}
 .hidden{
 	display:none;
 }
@@ -80,6 +83,20 @@ jQuery(function(){
 }
 .error{
 	color:#FF0000;
+}
+.bold{
+	font-weight:bold;	
+}
+.search{
+	height:50px;
+	width:80px;
+}
+.newsearch{
+	height:50px;
+	width:120px;
+}
+.border{
+	border: 1px solid gray;
 }
 </style>
 <div>

@@ -25,16 +25,16 @@
 			</tr>
 			<tr>
 				<td class='center pad10'>
-				1 <input type='radio' name='rating' value='1' checked="checked">&nbsp;
-				2 <input type='radio' name='rating' value='2'>&nbsp;
-				3 <input type='radio' name='rating' value='3'>&nbsp;
-				4 <input type='radio' name='rating' value='4'>&nbsp;
-				5 <input type='radio' name='rating' value='5'>&nbsp;
-				6 <input type='radio' name='rating' value='6'>&nbsp;
-				7 <input type='radio' name='rating' value='7'>&nbsp;
-				8 <input type='radio' name='rating' value='8'>&nbsp;
-				9 <input type='radio' name='rating' value='9'>&nbsp;
-				10 <input type='radio' name='rating' value='10'>&nbsp;
+				1 <input type='radio' name='rating' value='1' checked="checked">&nbsp;&nbsp;&nbsp;
+				2 <input type='radio' name='rating' value='2'>&nbsp;&nbsp;&nbsp;
+				3 <input type='radio' name='rating' value='3'>&nbsp;&nbsp;&nbsp;
+				4 <input type='radio' name='rating' value='4'>&nbsp;&nbsp;&nbsp;
+				5 <input type='radio' name='rating' value='5'>&nbsp;&nbsp;&nbsp;
+				6 <input type='radio' name='rating' value='6'>&nbsp;&nbsp;&nbsp;
+				7 <input type='radio' name='rating' value='7'>&nbsp;&nbsp;&nbsp;
+				8 <input type='radio' name='rating' value='8'>&nbsp;&nbsp;&nbsp;
+				9 <input type='radio' name='rating' value='9'>&nbsp;&nbsp;&nbsp;
+				10 <input type='radio' name='rating' value='10'>&nbsp;&nbsp;&nbsp;
 				</td>
 			</tr>
 			<tr>
