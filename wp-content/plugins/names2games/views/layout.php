@@ -101,6 +101,10 @@ div.n2gcontainer table, div.n2gcontainer table td, div.n2gcontainer table th{
 div.n2gcontainer .border{
 	border: 1px solid gray;
 }
+.rate{
+	width:400px;
+	font-size:18px;
+}
 </style>
 <div class='n2gcontainer'>
 	<table id='main'>
