@@ -1,1 +1,3 @@
-<div class='center pad20'>Names2 Games</div>
+<?php
+	n2gLoadView("rate/rate", $data);
+?>

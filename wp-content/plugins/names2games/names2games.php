@@ -8,11 +8,19 @@ Version: 1.0
 Author: Jairus Bondoc
 */
 function n2gUrl($add=""){
-	$pluginbaseurl = dirname($_SERVER['SCRIPT_NAME'])."/n2g/"; //the page slug to be created
+	$sn = dirname($_SERVER['SCRIPT_NAME']);
+	if(trim($sn)=="/"){
+		$sn = "";
+	}
+	$pluginbaseurl = $sn."/n2g/"; //the page slug to be created
 	return $pluginbaseurl.$add;
 }
 function n2gBaseUrl($add=""){
-	$pluginbaseurl = dirname($_SERVER['SCRIPT_NAME'])."/wp-content/plugins/names2games/";
+	$sn = dirname($_SERVER['SCRIPT_NAME']);
+	if(trim($sn)=="/"){
+		$sn = "";
+	}
+	$pluginbaseurl = $sn."/wp-content/plugins/names2games/";
 	return $pluginbaseurl.$add;
 }
 function n2gRedirect($url){
@@ -168,14 +176,17 @@ else{
 //create databases
 add_action('wp_enqueue_scripts', 'n2g_method');
 
-$sql = "CREATE TABLE IF NOT EXISTS `n2g_ratings` (
-  `id` int(2) NOT NULL AUTO_INCREMENT,
-  `term` varchar(255) NOT NULL,
-  `rating` int(1) NOT NULL,
-  `dateadded` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;";
 
+
+$sql = "
+CREATE TABLE IF NOT EXISTS `n2g_ratings` (
+`id` int(2) NOT NULL AUTO_INCREMENT,
+`term` varchar(255) NOT NULL,
+`user_id` int(1) NOT NULL,
+`rating` int(1) NOT NULL,
+`dateadded` datetime NOT NULL,
+PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;";
 global $wpdb;
 $wpdb->query($sql);
 
