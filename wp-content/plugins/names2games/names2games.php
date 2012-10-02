@@ -45,31 +45,8 @@ function n2gLoadView($view, $data=array(), $ob=false){
 		echo $out;
 	}
 }
-add_filter('the_content', 'Names2Games');
-function Names2Games($content){
-	/*
-	//some useful things
-	global $current_user;
-	$pluginbaseurl = dirname($_SERVER['SCRIPT_NAME'])."/wp-content/plugins/sampleplugin/";
-	print_r(get_func_args(),1);
-	get_currentuserinfo();
-	$nick = "";
-	ob_start();
-	the_author_nickname();
-	$nick = ob_get_contents();
-	ob_end_clean();
-	$nick = $current_user->user_login;
-	if(!$nick){
-		$nick = " ";
-	}
-	*/
-	
-		
-	$matches = array();
-	preg_match_all("/\[\[Names2Games:*([^]]*)\]\]/iUs", $content, $matches);
-	$toreplace = $matches[0][0];
-	$extraargs = $matches[1][0];
-	
+
+function n2gProcess(){
 	ob_start();
 	$c = $_GET['c'];
 	$a = $_GET['a'];
@@ -95,9 +72,55 @@ function Names2Games($content){
 	}
 	$res = ob_get_contents();
 	ob_end_clean();
+	return $res;
+}
+function Names2Games($content){
+	/*
+	//some useful things
+	global $current_user;
+	$pluginbaseurl = dirname($_SERVER['SCRIPT_NAME'])."/wp-content/plugins/sampleplugin/";
+	print_r(get_func_args(),1);
+	get_currentuserinfo();
+	$nick = "";
+	ob_start();
+	the_author_nickname();
+	$nick = ob_get_contents();
+	ob_end_clean();
+	$nick = $current_user->user_login;
+	if(!$nick){
+		$nick = " ";
+	}
+	*/
+	
+		
+	$matches = array();
+	preg_match_all("/\[\[Names2Games:*([^]]*)\]\]/iUs", $content, $matches);
+	$toreplace = $matches[0][0];
+	$extraargs = $matches[1][0];
+	
+	$res = n2gProcess();
 	$content = str_replace($toreplace, $res, $content);
+	$content = $res;
 	return $content;
 }
+if ( !function_exists('wp_get_current_user') ) {
+	function wp_get_current_user() {
+		// Insert pluggable.php before calling get_currentuserinfo()
+		require (ABSPATH . WPINC . '/pluggable.php');
+		global $current_user;
+		get_currentuserinfo();
+		return $current_user;
+	}
+}
+if($_GET['c']=='ajax'){
+	echo n2gProcess();
+	exit();
+}
+else{
+	add_filter('the_content', 'Names2Games');
+}
+
+
 
 function n2g_method() {
     wp_deregister_script( 'jquery' );
@@ -140,22 +163,22 @@ else{
 
 /*
 //create page
- 
+ */
 
 //create databases
 add_action('wp_enqueue_scripts', 'n2g_method');
 
-$sql = "CREATE TABLE IF NOT EXISTS `n2g_users` (
-  `id` tinyint(2) NOT NULL AUTO_INCREMENT,
-  `fbuid` tinyint(2) NOT NULL,
-  `fbdata_serial_b64` longtext NOT NULL,
+$sql = "CREATE TABLE IF NOT EXISTS `n2g_ratings` (
+  `id` int(2) NOT NULL AUTO_INCREMENT,
+  `term` varchar(255) NOT NULL,
+  `rating` int(1) NOT NULL,
   `dateadded` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;";
 
 global $wpdb;
 $wpdb->query($sql);
-*/
+
 
 
 ?>

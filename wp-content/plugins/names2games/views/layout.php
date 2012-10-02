@@ -17,9 +17,83 @@ jQuery(function(){
 		onSelect: function(date) {
 			},
 		});
+	$(".rate").autocomplete({
+		//define callback to format results
+		source: function(req, add){
+			
+			//pass request to server
+			$.getJSON("<?php echo n2gUrl("?c=ajax&a=getratings")?>", req, function(data) {
+				//create array for response objects
+				var suggestions = [];
+				//process response
+				$.each(data, function(i, val){								
+					suggestions.push(val.name);
+				});
+				//pass array to callback
+				add(suggestions);
+			});
+		},
+		//define select handler
+		select: function(e, ui) {
+		},
+	
+	});
+
 });
 </script>
-
+<style>
+#main{
+	width:100%;
+}
+.center{
+	text-align:center;
+}
+.left{
+	text-align:left;
+}
+.right{
+	text-align:right;
+}
+.top{
+	vertical-align:top;
+}
+.middle{
+	vertical-align:middle;
+}
+.top{
+	vertical-align:bottom;
+}
+.pad10{
+	padding:10px;
+}
+.pad20{
+	padding:20px;
+}
+.p100{
+	width:100%;
+}
+.hidden{
+	display:none;
+}
+.success{
+	color:#009900;
+}
+.error{
+	color:#FF0000;
+}
+</style>
 <div>
-	<?php echo $content; ?>
+	<table id='main'>
+		<tr>
+			<td class='center top'>
+				<a href='<?php echo n2gUrl("?c=rate"); ?>'>Rate</a>
+			</td>
+			<td class='center top'>
+				<a href='<?php echo n2gUrl("?c=search"); ?>'>Search</a>
+			</td>
+		</tr>
+	</table>
+</div>
+<div>
+<?php echo $content; ?>
 </div>
