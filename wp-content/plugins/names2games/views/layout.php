@@ -95,11 +95,14 @@ jQuery(function(){
 	height:50px;
 	width:120px;
 }
-.border{
+div.n2gcontainer table, div.n2gcontainer table td, div.n2gcontainer table th{
+	border: 0px;
+}
+div.n2gcontainer .border{
 	border: 1px solid gray;
 }
 </style>
-<div>
+<div class='n2gcontainer'>
 	<table id='main'>
 		<tr>
 			<td class='center top'>
@@ -111,6 +114,6 @@ jQuery(function(){
 		</tr>
 	</table>
 </div>
-<div>
+<div class='n2gcontainer'>
 <?php echo $content; ?>
 </div>

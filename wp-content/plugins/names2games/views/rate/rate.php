@@ -24,7 +24,7 @@
 				<td class='center pad10'>Term: <input class='rate' type="text" name='term' /></td>
 			</tr>
 			<tr>
-				<td class='center pad10'>
+				<td class='center pad10'>Rating: 
 				1 <input type='radio' name='rating' value='1' checked="checked">&nbsp;&nbsp;&nbsp;
 				2 <input type='radio' name='rating' value='2'>&nbsp;&nbsp;&nbsp;
 				3 <input type='radio' name='rating' value='3'>&nbsp;&nbsp;&nbsp;
